@@ -1,0 +1,21 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "https://repo1.maven.org/maven2" }
+    }
+    dependencies {
+        classpath "org.openapitools:openapi-generator-gradle-plugin:4.2.3"
+    }
+}
+
+apply plugin: 'org.openapi.generator'
+
+task buildKotlinClient(type: org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+    generatorName = "kotlin"
+    inputSpec = "$rootDir/apiclient_generator/swagger.yaml".toString()
+    outputDir = "$buildDir/kotlin".toString()
+    library = "jvm-retrofit2"
+    configOptions = [
+            dateLibrary: "threetenbp"
+    ]
+}

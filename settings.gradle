@@ -1,2 +1,3 @@
+include ':apiclient_generator'
 include ':app'
 rootProject.name = "Generate Retrofit From Openapi"
